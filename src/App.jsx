@@ -629,7 +629,7 @@ const App = () => {
     const callApi = async (attempt = 0) => {
       try {
         // 독립 웹 환경에서는 캔버스 제약이 없으므로 가장 호환성이 높은 1.5-flash 모델을 사용합니다.
-        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=${apiKey}`, {
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=${apiKey}`, {
           method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify(payload)
         });
         if (!response.ok) throw new Error('API request failed');
