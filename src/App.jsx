@@ -17,17 +17,16 @@ import { getFirestore, collection, doc, setDoc, onSnapshot, addDoc, updateDoc, d
 // (주의: 캔버스 내부 컴파일러 오류 방지를 위해 환경 변수 구문을 주석 처리했습니다.
 // 깃허브나 로컬(VS Code)로 복사하실 때는 아래 주석을 참고하여 코드를 수정해 주세요.)
 
-const apiKey = ""; 
-// 실제 외부 환경 배포 시 위 줄을 지우고 아래 코드를 사용하세요:
-// const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
+// --- Vercel 환경 변수에서 API 키 및 Firebase 설정 가져오기 ---
+const apiKey = import.meta.env.VITE_GEMINI_API_KEY;
 
-const firebaseConfig = typeof __firebase_config !== 'undefined' ? JSON.parse(__firebase_config) : {
-  apiKey: "",             // 실제 배포 시: import.meta.env.VITE_FIREBASE_API_KEY
-  authDomain: "",         // 실제 배포 시: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN
-  projectId: "",          // 실제 배포 시: import.meta.env.VITE_FIREBASE_PROJECT_ID
-  storageBucket: "",      // 실제 배포 시: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET
-  messagingSenderId: "",  // 실제 배포 시: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID
-  appId: ""               // 실제 배포 시: import.meta.env.VITE_FIREBASE_APP_ID
+const firebaseConfig = {
+  apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
+  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
+  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
+  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
+  appId: import.meta.env.VITE_FIREBASE_APP_ID
 };
 
 const app = initializeApp(firebaseConfig);
